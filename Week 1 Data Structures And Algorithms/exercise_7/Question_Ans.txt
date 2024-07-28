@@ -1,0 +1,49 @@
+1.	Understand Recursive Algorithms:
+o	Explain the concept of recursion and how it can simplify certain problems.
+
+
+Answers :
+
+The Concept of Recursion is as follows :
+
+Recursion: A method of solving a problem where the solution depends on solutions to smaller instances of the same problem. A recursive function calls itself with a smaller or simpler input.
+Base Case: The condition under which the recursive function stops calling itself, preventing an infinite loop.
+Recursive Case: The part of the function where it calls itself with a smaller or simpler input.
+
+Example:
+To illustrate recursion,here is the calculation of factorial of a number :
+
+Factorial of 5 ==> (5!) is 5 * 4 * 3 * 2 * 1.
+This can be broken down as: 5! = 5 * 4!, 4! = 4 * 3!, and so on.
+The base case is 1! = 1.
+
+3.	Implementation:
+o	Implement a recursive algorithm to predict future values based on past growth rates.
+
+Answers :
+
+Recursive Algorithm to Predict Future Values as used in the code :
+
+The recursive method calculateFutureValue takes three parameters:
+
+presentValue: The current value of the financial metric.
+growthRate: The growth rate per period.
+periods: The number of periods into the future we want to predict.
+
+The method uses the formula:
+Future Value=Present Value×(1+Growth Rate)^Periods
+
+
+4.	Analysis:
+o	Discuss the time complexity of your recursive algorithm.
+o	Explain how to optimize the recursive solution to avoid excessive computation.
+
+
+Answers :
+
+Time Complexity:
+Recursive Algorithm: The time complexity of the recursive algorithm is O(n), where n is the number of periods. Each recursive call reduces the number of periods by one until the base case is reached.
+
+Optimizing the Recursive Solution:
+Memoization: Store the results of previous computations to avoid redundant calculations. This is useful if the function is called multiple times with the same parameters.This is also known as Top-Down Dynamic Programming.
+
