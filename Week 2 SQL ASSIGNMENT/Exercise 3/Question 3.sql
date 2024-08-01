@@ -1,3 +1,6 @@
+Scenario 3: Customers should be able to transfer funds between their accounts.
+o	Question: Write a stored procedure TransferFunds that transfers a specified amount from one account to another, checking that the source account has sufficient balance before making the transfer.
+
 CREATE OR REPLACE PROCEDURE TransferFunds (
     p_SourceAccountID IN Accounts.AccountID%TYPE,
     p_DestinationAccountID IN Accounts.AccountID%TYPE,
@@ -5,7 +8,7 @@ CREATE OR REPLACE PROCEDURE TransferFunds (
 ) IS
     v_SourceBalance Accounts.Balance%TYPE;
 BEGIN
-    -- Check if the source account has sufficient balance
+
     SELECT Balance INTO v_SourceBalance
     FROM Accounts
     WHERE AccountID = p_SourceAccountID;
@@ -14,14 +17,14 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20001, 'Insufficient balance in source account.');
     END IF;
 
-    -- Begin transaction
+   
     BEGIN
-        -- Deduct the amount from the source account
+        
         UPDATE Accounts
         SET Balance = Balance - p_Amount
         WHERE AccountID = p_SourceAccountID;
 
-        -- Add the amount to the destination account
+   
         UPDATE Accounts
         SET Balance = Balance + p_Amount
         WHERE AccountID = p_DestinationAccountID;
@@ -31,7 +34,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Funds transferred successfully.');
     EXCEPTION
         WHEN OTHERS THEN
-            -- Handle exceptions
+    
             DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
             ROLLBACK; -- Rollback the transaction in case of an error
     END;
