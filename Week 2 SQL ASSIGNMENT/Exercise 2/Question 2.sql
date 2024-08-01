@@ -1,16 +1,21 @@
+Scenario 2: Manage errors when updating employee salaries.
+o	Question: Write a stored procedure UpdateSalary that increases the salary of an employee by a given percentage. If the employee ID does not exist, handle the exception and log an error message.
+
+
+
 CREATE OR REPLACE PROCEDURE UpdateSalary (
     p_EmployeeID IN Employees.EmployeeID%TYPE,
     p_Percentage IN NUMBER
 ) IS
     v_OldSalary Employees.Salary%TYPE;
 BEGIN
-    -- Check if the employee exists
+    
     SELECT Salary
     INTO v_OldSalary
     FROM Employees
     WHERE EmployeeID = p_EmployeeID;
     
-    -- Update the salary
+
     UPDATE Employees
     SET Salary = Salary * (1 + p_Percentage / 100)
     WHERE EmployeeID = p_EmployeeID;
@@ -20,10 +25,10 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Salary updated successfully.');
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        -- Handle the exception if the employee ID does not exist
+        
         DBMS_OUTPUT.PUT_LINE('Error: Employee with ID ' || p_EmployeeID || ' does not exist.');
     WHEN OTHERS THEN
-        -- Handle other exceptions
+       
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END UpdateSalary;
 /
