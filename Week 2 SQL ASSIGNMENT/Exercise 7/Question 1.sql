@@ -1,17 +1,21 @@
+Scenario 1: Group all customer-related procedures and functions into a package.
+o	Question: Create a package CustomerManagement with procedures for adding a new customer, updating customer details, and a function to get customer balance.
+
+
 CREATE OR REPLACE PACKAGE CustomerManagement AS
-    -- Procedure to add a new customer
+
     PROCEDURE AddNewCustomer(p_CustomerID IN NUMBER, p_Name IN VARCHAR2, p_DOB IN DATE, p_Balance IN NUMBER);
 
-    -- Procedure to update customer details
+
     PROCEDURE UpdateCustomerDetails(p_CustomerID IN NUMBER, p_Name IN VARCHAR2, p_Balance IN NUMBER);
 
-    -- Function to get customer balance
+ 
     FUNCTION GetCustomerBalance(p_CustomerID IN NUMBER) RETURN NUMBER;
 END CustomerManagement;
 /
 CREATE OR REPLACE PACKAGE BODY CustomerManagement AS
 
-    -- Procedure to add a new customer
+
     PROCEDURE AddNewCustomer(p_CustomerID IN NUMBER, p_Name IN VARCHAR2, p_DOB IN DATE, p_Balance IN NUMBER) IS
     BEGIN
         BEGIN
@@ -26,7 +30,7 @@ CREATE OR REPLACE PACKAGE BODY CustomerManagement AS
         END;
     END AddNewCustomer;
 
-    -- Procedure to update customer details
+  
     PROCEDURE UpdateCustomerDetails(p_CustomerID IN NUMBER, p_Name IN VARCHAR2, p_Balance IN NUMBER) IS
     BEGIN
         BEGIN
@@ -45,7 +49,7 @@ CREATE OR REPLACE PACKAGE BODY CustomerManagement AS
         END;
     END UpdateCustomerDetails;
 
-    -- Function to get customer balance
+ 
     FUNCTION GetCustomerBalance(p_CustomerID IN NUMBER) RETURN NUMBER IS
         v_Balance NUMBER;
     BEGIN
