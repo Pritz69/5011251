@@ -10,12 +10,12 @@ CREATE OR REPLACE FUNCTION CalculateMonthlyInstallment (
     v_MonthlyInterestRate NUMBER;
     v_NumPayments NUMBER;
 BEGIN
-    -- Convert annual interest rate to monthly and percentage to decimal
+    
     v_MonthlyInterestRate := p_InterestRate / 12 / 100;
-    -- Calculate the total number of monthly payments
+    
     v_NumPayments := p_LoanDurationYears * 12;
 
-    -- Calculate the monthly installment using the formula
+   
     IF v_MonthlyInterestRate > 0 THEN
         v_MonthlyInstallment := (p_LoanAmount * v_MonthlyInterestRate) /
             (1 - POWER(1 + v_MonthlyInterestRate, -v_NumPayments));
