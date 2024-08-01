@@ -1,3 +1,7 @@
+Scenario 1: Generate monthly statements for all customers.
+o	Question: Write a PL/SQL block using an explicit cursor GenerateMonthlyStatements that retrieves all transactions for the current month and prints a statement for each customer.
+
+
 DECLARE
     -- Define a record type for transactions
     --TYPE TransactionRec IS RECORD (
@@ -15,19 +19,19 @@ DECLARE
         WHERE EXTRACT(MONTH FROM t.TransactionDate) = EXTRACT(MONTH FROM SYSDATE)
         AND EXTRACT(YEAR FROM t.TransactionDate) = EXTRACT(YEAR FROM SYSDATE);
 
-    -- Variable to hold each record fetched by the cursor
+    
     v_Transaction GenerateMonthlyStatements%ROWTYPE;
     --v_Transaction TransactionRec;
 BEGIN
-    -- Open the cursor
+    
     OPEN GenerateMonthlyStatements;
 
-    -- Loop through each record fetched by the cursor
+    
     LOOP
         FETCH GenerateMonthlyStatements INTO v_Transaction;
         EXIT WHEN GenerateMonthlyStatements%NOTFOUND;
 
-        -- Print the transaction details
+      
         DBMS_OUTPUT.PUT_LINE('Transaction ID: ' || v_Transaction.TransactionID);
         DBMS_OUTPUT.PUT_LINE('Account ID: ' || v_Transaction.AccountID);
         DBMS_OUTPUT.PUT_LINE('Transaction Date: ' || v_Transaction.TransactionDate);
@@ -36,17 +40,17 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('-----------------------------------');
     END LOOP;
 
-    -- Close the cursor
+    
     CLOSE GenerateMonthlyStatements;
 
 EXCEPTION
     WHEN OTHERS THEN
-        -- Handle exceptions
+      
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END;
 /
 
--- Insert test data into Transactions table
+
 INSERT INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType)
 VALUES (15, 1, TO_DATE('2024-08-01', 'YYYY-MM-DD'), 1000, 'DEPOSIT');
 
@@ -59,6 +63,6 @@ VALUES (17, 3, TO_DATE('2024-08-20', 'YYYY-MM-DD'), 1500, 'DEPOSIT');
 INSERT INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType)
 VALUES (18, 4, TO_DATE('2024-07-25', 'YYYY-MM-DD'), 2000, 'DEPOSIT'); -- Older transaction
 
--- Commit the changes
+
 COMMIT;
 
