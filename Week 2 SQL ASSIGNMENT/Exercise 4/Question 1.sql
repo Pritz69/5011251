@@ -1,9 +1,13 @@
+Scenario 1: Calculate the age of customers for eligibility checks.
+o	Question: Write a function CalculateAge that takes a customer's date of birth as input and returns their age in years.
+
+
 CREATE OR REPLACE FUNCTION CalculateAge (
     p_DOB IN DATE
 ) RETURN NUMBER IS
     v_Age NUMBER;
 BEGIN
-    -- Calculate age based on date of birth
+    
     SELECT FLOOR(MONTHS_BETWEEN(SYSDATE, p_DOB) / 12)
     INTO v_Age
     FROM dual;
@@ -11,7 +15,7 @@ BEGIN
     RETURN v_Age;
 EXCEPTION
     WHEN OTHERS THEN
-        -- Handle any exceptions
+        
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
         RETURN NULL; -- Return NULL in case of an error
 END CalculateAge;
