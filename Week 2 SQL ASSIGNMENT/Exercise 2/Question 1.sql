@@ -1,3 +1,7 @@
+Scenario 1: Handle exceptions during fund transfers between accounts.
+o	Question: Write a stored procedure SafeTransferFunds that transfers funds between two accounts. Ensure that if any error occurs (e.g., insufficient funds), an appropriate error message is logged and the transaction is rolled back.
+
+
 SET SERVEROUTPUT ON;
 CREATE OR REPLACE PROCEDURE SafeTransferFunds (
     p_from_account_id  NUMBER,
@@ -12,10 +16,10 @@ CREATE OR REPLACE PROCEDURE SafeTransferFunds (
     v_error_message VARCHAR2(4000);
 
 BEGIN
-    -- Output for debugging
+    
     DBMS_OUTPUT.PUT_LINE('Starting Procedure');
 
-    -- Fetch the balance of the from account
+    
     SELECT balance INTO v_from_account_balance
     FROM Accounts
     WHERE AccountID = p_from_account_id
@@ -27,7 +31,7 @@ BEGIN
         RAISE insufficient_funds;
     END IF;
 
-    -- Fetch the balance of the to account
+    
     SELECT balance INTO v_to_account_balance
     FROM Accounts
     WHERE AccountID = p_to_account_id
@@ -35,12 +39,12 @@ BEGIN
 
     DBMS_OUTPUT.PUT_LINE('To Account Balance: ' || v_to_account_balance);
 
-    -- Update the from account
+  
     UPDATE Accounts
     SET balance = balance - p_amount, LastModified = SYSDATE
     WHERE AccountID = p_from_account_id;
 
-    -- Update the to account
+   
     UPDATE Accounts
     SET balance = balance + p_amount, LastModified = SYSDATE
     WHERE AccountID = p_to_account_id;
@@ -76,14 +80,14 @@ EXCEPTION
 END SafeTransferFunds;
 /
 
--- Insert customers
+
 INSERT INTO Customers (CustomerID, Name, DOB, Balance, LastModified)
 VALUES (20, 'John Doe', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 20000, SYSDATE);
 
 INSERT INTO Customers (CustomerID, Name, DOB, Balance, LastModified)
 VALUES (21, 'Jane Smith', TO_DATE('1995-05-15', 'YYYY-MM-DD'), 30000, SYSDATE);
 
--- Insert accounts
+
 INSERT INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified)
 VALUES (20, 20, 'Checking', 10000, SYSDATE);
 
