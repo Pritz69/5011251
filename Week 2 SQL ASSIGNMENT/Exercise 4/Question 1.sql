@@ -1,7 +1,3 @@
-Scenario 1: Calculate the age of customers for eligibility checks.
-o	Question: Write a function CalculateAge that takes a customer's date of birth as input and returns their age in years.
-
-
 CREATE OR REPLACE FUNCTION CalculateAge (
     p_DOB IN DATE
 ) RETURN NUMBER IS
@@ -27,3 +23,6 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('The age is: ' || v_Age);
 END;
 /
+
+Scenario 1: Calculate the age of customers for eligibility checks.
+o	Question: Write a function CalculateAge that takes a customer's date of birth as input and returns their age in years.
