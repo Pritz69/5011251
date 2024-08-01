@@ -8,12 +8,12 @@ CREATE OR REPLACE FUNCTION HasSufficientBalance (
 ) RETURN BOOLEAN IS
     v_Balance NUMBER;
 BEGIN
-    -- Retrieve the balance for the given account
+    
     SELECT Balance INTO v_Balance
     FROM Accounts
     WHERE AccountID = p_AccountID;
 
-    -- Check if the balance is sufficient
+    
     IF v_Balance >= p_Amount THEN
         RETURN TRUE;
     ELSE
@@ -22,10 +22,10 @@ BEGIN
 
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        -- Handle case where account ID does not exist
+       
         RETURN FALSE;
     WHEN OTHERS THEN
-        -- Handle other exceptions
+        
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
         RETURN FALSE;
 END HasSufficientBalance;
