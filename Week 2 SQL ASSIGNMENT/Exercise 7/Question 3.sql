@@ -1,17 +1,21 @@
+Scenario 3: Group all account-related operations into a package.
+o	Question: Create a package AccountOperations with procedures for opening a new account, closing an account, and a function to get the total balance of a customer across all accounts.
+
+
+
 CREATE OR REPLACE PACKAGE AccountOperations AS
-    -- Procedure to open a new account
     PROCEDURE OpenNewAccount(p_AccountID IN NUMBER, p_CustomerID IN NUMBER, p_AccountType IN VARCHAR2, p_Balance IN NUMBER);
     
-    -- Procedure to close an account
+
     PROCEDURE CloseAccount(p_AccountID IN NUMBER);
     
-    -- Function to get the total balance of a customer across all accounts
+
     FUNCTION GetTotalCustomerBalance(p_CustomerID IN NUMBER) RETURN NUMBER;
 END AccountOperations;
 /
 CREATE OR REPLACE PACKAGE BODY AccountOperations AS
 
-    -- Procedure to open a new account
+ 
     PROCEDURE OpenNewAccount(p_AccountID IN NUMBER, p_CustomerID IN NUMBER, p_AccountType IN VARCHAR2, p_Balance IN NUMBER) IS
     BEGIN
         BEGIN
@@ -26,7 +30,7 @@ CREATE OR REPLACE PACKAGE BODY AccountOperations AS
         END;
     END OpenNewAccount;
 
-    -- Procedure to close an account
+
     PROCEDURE CloseAccount(p_AccountID IN NUMBER) IS
     BEGIN
         BEGIN
@@ -44,7 +48,6 @@ CREATE OR REPLACE PACKAGE BODY AccountOperations AS
         END;
     END CloseAccount;
 
-    -- Function to get the total balance of a customer across all accounts
     FUNCTION GetTotalCustomerBalance(p_CustomerID IN NUMBER) RETURN NUMBER IS
         v_TotalBalance NUMBER;
     BEGIN
