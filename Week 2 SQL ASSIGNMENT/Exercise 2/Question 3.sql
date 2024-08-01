@@ -1,3 +1,6 @@
+o	Question: Write a stored procedure AddNewCustomer that inserts a new customer into the Customers table. If a customer with the same ID already exists,
+    handle the exception by logging an error and preventing the insertion.
+
 CREATE OR REPLACE PROCEDURE AddNewCustomer (
     p_CustomerID IN Customers.CustomerID%TYPE,
     p_Name IN Customers.Name%TYPE,
@@ -6,7 +9,7 @@ CREATE OR REPLACE PROCEDURE AddNewCustomer (
     p_LastModified IN Customers.LastModified%TYPE
 ) IS
 BEGIN
-    -- Attempt to insert the new customer
+   
     BEGIN
         INSERT INTO Customers (CustomerID, Name, DOB, Balance, LastModified)
         VALUES (p_CustomerID, p_Name, p_DOB, p_Balance, p_LastModified);
@@ -16,10 +19,10 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Customer added successfully.');
     EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN
-            -- Handle the exception if a customer with the same ID already exists
+            
             DBMS_OUTPUT.PUT_LINE('Error: Customer with ID ' || p_CustomerID || ' already exists.');
         WHEN OTHERS THEN
-            -- Handle other exceptions
+           
             DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
     END;
 END AddNewCustomer;
