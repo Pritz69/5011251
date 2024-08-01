@@ -1,17 +1,20 @@
+Scenario 2: Create a package to manage employee data.
+o	Question: Write a package EmployeeManagement with procedures to hire new employees, update employee details, and a function to calculate annual salary.
+
+
 CREATE OR REPLACE PACKAGE EmployeeManagement AS
-    -- Procedure to hire a new employee
+   
     PROCEDURE HireNewEmployee(p_EmployeeID IN NUMBER, p_Name IN VARCHAR2, p_Position IN VARCHAR2, p_Salary IN NUMBER, p_Department IN VARCHAR2);
     
-    -- Procedure to update employee details
+
     PROCEDURE UpdateEmployeeDetails(p_EmployeeID IN NUMBER, p_Name IN VARCHAR2, p_Position IN VARCHAR2, p_Salary IN NUMBER, p_Department IN VARCHAR2);
     
-    -- Function to calculate the annual salary
+
     FUNCTION CalculateAnnualSalary(p_EmployeeID IN NUMBER) RETURN NUMBER;
 END EmployeeManagement;
 /
 CREATE OR REPLACE PACKAGE BODY EmployeeManagement AS
 
-    -- Procedure to hire a new employee
     PROCEDURE HireNewEmployee(p_EmployeeID IN NUMBER, p_Name IN VARCHAR2, p_Position IN VARCHAR2, p_Salary IN NUMBER, p_Department IN VARCHAR2) IS
     BEGIN
         BEGIN
@@ -26,7 +29,7 @@ CREATE OR REPLACE PACKAGE BODY EmployeeManagement AS
         END;
     END HireNewEmployee;
 
-    -- Procedure to update employee details
+
     PROCEDURE UpdateEmployeeDetails(p_EmployeeID IN NUMBER, p_Name IN VARCHAR2, p_Position IN VARCHAR2, p_Salary IN NUMBER, p_Department IN VARCHAR2) IS
     BEGIN
         BEGIN
@@ -45,7 +48,6 @@ CREATE OR REPLACE PACKAGE BODY EmployeeManagement AS
         END;
     END UpdateEmployeeDetails;
 
-    -- Function to calculate the annual salary
     FUNCTION CalculateAnnualSalary(p_EmployeeID IN NUMBER) RETURN NUMBER IS
         v_Salary NUMBER;
         v_AnnualSalary NUMBER;
