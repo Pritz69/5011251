@@ -1,3 +1,7 @@
+Scenario 3: Check if a customer has sufficient balance before making a transaction.
+o	Question: Write a function HasSufficientBalance that takes an account ID and an amount as input and returns a boolean indicating whether the account has at least the specified amount.
+
+
 CREATE OR REPLACE FUNCTION HasSufficientBalance (
     p_AccountID IN Accounts.AccountID%TYPE,
     p_Amount IN NUMBER
