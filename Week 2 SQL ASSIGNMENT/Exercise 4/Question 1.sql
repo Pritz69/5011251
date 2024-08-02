@@ -24,5 +24,5 @@ BEGIN
 END;
 /
 
-Scenario 1: Calculate the age of customers for eligibility checks.
-o	Question: Write a function CalculateAge that takes a customer's date of birth as input and returns their age in years.
+---Scenario 1: Calculate the age of customers for eligibility checks.
+---o	Question: Write a function CalculateAge that takes a customer's date of birth as input and returns their age in years.
