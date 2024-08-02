@@ -1,5 +1,5 @@
-Scenario 2: Create a package to manage employee data.
-o	Question: Write a package EmployeeManagement with procedures to hire new employees, update employee details, and a function to calculate annual salary.
+---Scenario 2: Create a package to manage employee data.
+---o	Question: Write a package EmployeeManagement with procedures to hire new employees, update employee details, and a function to calculate annual salary.
 
 
 CREATE OR REPLACE PACKAGE EmployeeManagement AS
