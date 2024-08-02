@@ -62,7 +62,7 @@ VALUES (18, 4, TO_DATE('2024-07-25', 'YYYY-MM-DD'), 2000, 'DEPOSIT'); -- Older t
 
 COMMIT;
 
-Scenario 1: Generate monthly statements for all customers.
-o	Question: Write a PL/SQL block using an explicit cursor GenerateMonthlyStatements that retrieves all transactions for the current month and prints a statement for each customer.
+---Scenario 1: Generate monthly statements for all customers.
+---o	Question: Write a PL/SQL block using an explicit cursor GenerateMonthlyStatements that retrieves all transactions for the current month and prints a statement for each customer.
 
 
