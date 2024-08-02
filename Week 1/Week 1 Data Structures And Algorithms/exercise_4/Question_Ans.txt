@@ -1,0 +1,42 @@
+1.	Understand Array Representation:
+o	Explain how arrays are represented in memory and their advantages.
+
+Answers :
+
+The Representation of Array in Memory:
+
+Contiguous Memory Allocation: Arrays are stored in contiguous blocks of memory. Each element in the array is placed next to the previous one, allowing for efficient access.
+Indexing: Arrays provide O(1) time complexity for accessing elements by their index, as the memory address of each element can be calculated directly.
+Fixed Size: Arrays have a fixed size, meaning the number of elements they can hold is determined at the time of creation.
+Advantages of Arrays:
+
+Constant Time Access: Direct indexing allows for O(1) time complexity for element access.
+Cache Friendliness: Contiguous memory allocation improves cache performance.
+Memory Efficiency: Arrays have no extra memory overhead for storing pointers or references, unlike linked lists.
+
+4.	Analysis:
+o	Analyze the time complexity of each operation (add, search, traverse, delete).
+o	Discuss the limitations of arrays and when to use them.
+
+Answers :
+
+Time Complexity of Operations:
+
+Add: O(1) (Best case, when there's space available)
+Search: O(n) (Worst case, when the employee is not found)
+Traverse: O(n) (Always, as each element needs to be visited)
+Delete: O(n) (Worst case, when the employee to be deleted is at the beginning or middle of the array)
+
+
+Limitations of Arrays:
+
+Fixed Size: Arrays cannot dynamically resize. If the array becomes full, a new, larger array needs to be created and elements copied over.
+Inefficient Deletion: Deleting an element requires shifting subsequent elements, leading to O(n) time complexity.
+Inefficient Insertion: Similar to deletion, inserting an element (other than at the end) requires shifting elements, leading to O(n) time complexity.
+
+
+When to Use Arrays:
+
+When the number of elements is known and fixed. Arrays are suitable for scenarios where the number of elements is predetermined and does not change frequently.
+When fast access is required. Arrays provide constant time access for elements by index, making them suitable for scenarios where fast access is crucial.
+When memory overhead should be minimized. Arrays are memory efficient as they do not require extra space for pointers or references.

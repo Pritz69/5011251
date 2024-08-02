@@ -1,0 +1,48 @@
+1.	Understand Asymptotic Notation:
+o	Explain Big O notation and how it helps in analyzing algorithms.
+o	Describe the best, average, and worst-case scenarios for search operations.
+
+Answer:
+
+Big O Notation:
+
+Big O notation describes the upper bound of an algorithm's running time, helping us understand its worst-case scenario.
+It provides a way to express the time complexity of an algorithm as a function of the input size (n).
+For example, an algorithm with a time complexity of O(n) will have a running time that increases linearly with the size of the input.
+
+Best, Average, and Worst-Case Scenarios:
+
+Best Case: The scenario where the algorithm performs the minimum number of operations. For a search operation, the best case for linear search as well as binary search is O(1) when the desired element is the first one.
+Average Case: The scenario representing the average number of operations. For linear search, the average case is O(n/2), but we usually simplify it to O(n). For binary search, the average case is O(log n).
+Worst Case: The scenario where the algorithm performs the maximum number of operations. For linear search, the worst case is O(n) when the element is at the end or not present at all. For binary search, the worst case is O(log n).
+
+
+4.	Analysis:
+o	Compare the time complexity of linear and binary search algorithms.
+o	Discuss which algorithm is more suitable for your platform and why.
+
+
+Answer: 
+
+Time Complexity Comparison:
+
+Linear Search:
+
+Best Case: O(1)
+Average Case: O(n)
+Worst Case: O(n)
+
+Binary Search:
+
+Best Case: O(1)
+Average Case: O(log n)
+Worst Case: O(log n)
+
+
+Suitability for this ECommerce Platform:
+
+Linear Search is simple and does not require the array to be sorted. However, its time complexity is O(n), which is less efficient for large datasets.
+
+Binary Search is much faster with a time complexity of O(log n), but it requires the array to be sorted beforehand. Sorting the array takes O(n log n) time.
+For an e-commerce platform with a large number of products, binary search is more suitable due to its superior performance. 
+Although sorting the array has a higher initial cost, the benefit of faster search operations makes it a better choice for scenarios with frequent search operations.
