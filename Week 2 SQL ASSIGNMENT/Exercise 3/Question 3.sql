@@ -1,5 +1,5 @@
-Scenario 3: Customers should be able to transfer funds between their accounts.
-o	Question: Write a stored procedure TransferFunds that transfers a specified amount from one account to another, checking that the source account has sufficient balance before making the transfer.
+---Scenario 3: Customers should be able to transfer funds between their accounts.
+---o	Question: Write a stored procedure TransferFunds that transfers a specified amount from one account to another, checking that the source account has sufficient balance before making the transfer.
 
 CREATE OR REPLACE PROCEDURE TransferFunds (
     p_SourceAccountID IN Accounts.AccountID%TYPE,
