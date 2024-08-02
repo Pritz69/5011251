@@ -1,5 +1,5 @@
-Scenario 1: Group all customer-related procedures and functions into a package.
-o	Question: Create a package CustomerManagement with procedures for adding a new customer, updating customer details, and a function to get customer balance.
+---Scenario 1: Group all customer-related procedures and functions into a package.
+---o	Question: Create a package CustomerManagement with procedures for adding a new customer, updating customer details, and a function to get customer balance.
 
 
 CREATE OR REPLACE PACKAGE CustomerManagement AS
