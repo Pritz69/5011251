@@ -1,5 +1,5 @@
-Scenario 2: Maintain an audit log for all transactions.
-o	Question: Write a trigger LogTransaction that inserts a record into an AuditLog table whenever a transaction is inserted into the Transactions table.
+---Scenario 2: Maintain an audit log for all transactions.
+---o	Question: Write a trigger LogTransaction that inserts a record into an AuditLog table whenever a transaction is inserted into the Transactions table.
 
 
 CREATE TABLE AuditLog (
