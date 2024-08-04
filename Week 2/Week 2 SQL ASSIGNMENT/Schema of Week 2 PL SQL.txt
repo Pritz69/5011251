@@ -1,0 +1,192 @@
+CREATE TABLE Customers (
+    CustomerID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    DOB DATE,
+    Balance NUMBER,
+    LastModified DATE
+);
+
+INSERT ALL
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (1, 'John Doe', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 1000.50, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (2, 'Jane Smith', TO_DATE('1985-09-20', 'YYYY-MM-DD'), 750.75, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (3, 'Michael Johnson', TO_DATE('1982-03-10', 'YYYY-MM-DD'), 1500.25, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (4, 'Emily Brown', TO_DATE('1995-07-08', 'YYYY-MM-DD'), 500.00, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (5, 'David Lee', TO_DATE('1988-12-25', 'YYYY-MM-DD'), 2000.00, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (6, 'Sarah Wilson', TO_DATE('1993-04-30', 'YYYY-MM-DD'), 1200.80, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (7, 'James Miller', TO_DATE('1980-11-18', 'YYYY-MM-DD'), 1800.60, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (8, 'Lisa Taylor', TO_DATE('1987-06-12', 'YYYY-MM-DD'), 900.30, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (9, 'Kevin Clark', TO_DATE('1991-09-05', 'YYYY-MM-DD'), 300.25, SYSDATE)
+    INTO Customers (CustomerID, Name, DOB, Balance, LastModified) VALUES (10, 'Amanda Hall', TO_DATE('1994-02-28', 'YYYY-MM-DD'), 600.50, SYSDATE)
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE Accounts (
+    AccountID NUMBER PRIMARY KEY,
+    CustomerID NUMBER,
+    AccountType VARCHAR2(20),
+    Balance NUMBER,
+    LastModified DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+INSERT ALL
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (1, 1, 'Savings', 1500.75, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (2, 2, 'Checking', 1000.50, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (3, 3, 'Savings', 2000.00, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (4, 4, 'Checking', 500.25, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (5, 5, 'Savings', 2500.00, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (6, 6, 'Checking', 1200.75, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (7, 7, 'Savings', 3000.50, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (8, 8, 'Checking', 750.25, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (9, 9, 'Savings', 1600.00, SYSDATE)
+    INTO Accounts (AccountID, CustomerID, AccountType, Balance, LastModified) VALUES (10, 10, 'Checking', 900.50, SYSDATE)
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE Transactions (
+    TransactionID NUMBER PRIMARY KEY,
+    AccountID NUMBER,
+    TransactionDate DATE,
+    Amount NUMBER,
+    TransactionType VARCHAR2(10),
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);
+
+
+INSERT ALL
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (1, 1, TO_DATE('2024-07-20', 'YYYY-MM-DD'), 500.00, 'Deposit')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (2, 2, TO_DATE('2024-07-21', 'YYYY-MM-DD'), 300.00, 'Withdrawal')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (3, 3, TO_DATE('2024-07-22', 'YYYY-MM-DD'), 450.00, 'Deposit')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (4, 4, TO_DATE('2024-07-23', 'YYYY-MM-DD'), 250.00, 'Withdrawal')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (5, 5, TO_DATE('2024-07-24', 'YYYY-MM-DD'), 600.00, 'Deposit')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (6, 6, TO_DATE('2024-07-25', 'YYYY-MM-DD'), 200.00, 'Withdrawal')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (7, 7, TO_DATE('2024-07-26', 'YYYY-MM-DD'), 800.00, 'Deposit')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (8, 8, TO_DATE('2024-07-27', 'YYYY-MM-DD'), 350.00, 'Withdrawal')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (9, 9, TO_DATE('2024-07-28', 'YYYY-MM-DD'), 700.00, 'Deposit')
+    INTO Transactions (TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (10, 10, TO_DATE('2024-07-29', 'YYYY-MM-DD'), 400.00, 'Withdrawal')
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE Loans (
+    LoanID NUMBER PRIMARY KEY,
+    CustomerID NUMBER,
+    LoanAmount NUMBER,
+    InterestRate NUMBER,
+    StartDate DATE,
+    EndDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+INSERT ALL
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (1, 1, 5000.00, 5.5, TO_DATE('2024-01-15', 'YYYY-MM-DD'), TO_DATE('2025-01-15', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (2, 2, 10000.00, 4.5, TO_DATE('2024-02-20', 'YYYY-MM-DD'), TO_DATE('2025-02-20', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (3, 3, 7500.00, 6.0, TO_DATE('2024-03-10', 'YYYY-MM-DD'), TO_DATE('2025-03-10', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (4, 4, 3000.00, 5.0, TO_DATE('2024-04-05', 'YYYY-MM-DD'), TO_DATE('2025-04-05', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (5, 5, 15000.00, 4.0, TO_DATE('2024-05-25', 'YYYY-MM-DD'), TO_DATE('2025-05-25', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (6, 6, 8000.00, 5.2, TO_DATE('2024-06-18', 'YYYY-MM-DD'), TO_DATE('2025-06-18', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (7, 7, 12000.00, 4.8, TO_DATE('2024-07-12', 'YYYY-MM-DD'), TO_DATE('2025-07-12', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (8, 8, 4000.00, 5.1, TO_DATE('2024-08-07', 'YYYY-MM-DD'), TO_DATE('2025-08-07', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (9, 9, 6000.00, 5.6, TO_DATE('2024-09-15', 'YYYY-MM-DD'), TO_DATE('2025-09-15', 'YYYY-MM-DD'))
+    INTO Loans (LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate) VALUES (10, 10, 20000.00, 4.3, TO_DATE('2024-10-22', 'YYYY-MM-DD'), TO_DATE('2025-10-22', 'YYYY-MM-DD'))
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE Employees (
+    EmployeeID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    Position VARCHAR2(50),
+    Salary NUMBER,
+    Department VARCHAR2(50),
+    HireDate DATE
+); 
+
+
+
+INSERT ALL
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (1, 'Alice Johnson', 'Manager', 75000, 'Sales', TO_DATE('2020-01-15', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (2, 'Bob Smith', 'Analyst', 65000, 'Marketing', TO_DATE('2021-03-22', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (3, 'Charlie Brown', 'Developer', 70000, 'IT', TO_DATE('2019-07-18', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (4, 'Diana Ross', 'Designer', 60000, 'Design', TO_DATE('2018-05-10', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (5, 'Evan Lee', 'Manager', 80000, 'Operations', TO_DATE('2017-09-30', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (6, 'Fiona Green', 'Support', 55000, 'Customer Service', TO_DATE('2020-11-01', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (7, 'George White', 'Analyst', 67000, 'Finance', TO_DATE('2022-01-05', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (8, 'Hannah Black', 'HR', 62000, 'Human Resources', TO_DATE('2021-08-15', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (9, 'Ian Brown', 'Developer', 71000, 'IT', TO_DATE('2019-12-20', 'YYYY-MM-DD'))
+    INTO Employees (EmployeeID, Name, Position, Salary, Department, HireDate) VALUES (10, 'Jessica Blue', 'Manager', 85000, 'Sales', TO_DATE('2016-04-12', 'YYYY-MM-DD'))
+SELECT * FROM dual;
